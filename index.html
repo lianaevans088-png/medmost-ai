@@ -1,32 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>МедМост — цифровой мост между медицинским вузом и первым рабочим местом врача</title>
+  <title>МедМост — цифровой мост между медвузом и первым рабочим местом врача</title>
   <meta name="description" content="МедМост — цифровая платформа практико-ориентированной подготовки студентов медицинских университетов к первому рабочему месту врача." />
 
   <style>
     :root {
-      --bg: #f6f9fc;
-      --bg-soft: #eef5fa;
-      --white: #ffffff;
       --navy: #071a33;
-      --navy-2: #0c2748;
+      --navy2: #0c2748;
       --blue: #2478ff;
       --cyan: #21c4c7;
-      --cyan-soft: #dff9f8;
       --red: #8f1d3f;
-      --red-soft: #f7e8ee;
-      --graphite: #263648;
+      --bg: #f6f9fc;
+      --soft: #eef5fa;
+      --text: #263648;
       --muted: #6e7d90;
-      --line: rgba(15, 39, 72, 0.12);
+      --white: #ffffff;
+      --line: rgba(12, 39, 72, 0.1);
       --shadow: 0 24px 70px rgba(7, 26, 51, 0.12);
-      --shadow-soft: 0 14px 40px rgba(7, 26, 51, 0.08);
-      --radius-xl: 34px;
-      --radius-lg: 24px;
-      --radius-md: 18px;
+      --soft-shadow: 0 14px 40px rgba(7, 26, 51, 0.08);
       --max: 1180px;
+      --r: 28px;
+      --r2: 42px;
     }
 
     * {
@@ -41,18 +38,18 @@
 
     body {
       font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      background:
-        radial-gradient(circle at 10% 0%, rgba(33, 196, 199, 0.18), transparent 32%),
-        radial-gradient(circle at 92% 6%, rgba(36, 120, 255, 0.16), transparent 34%),
-        linear-gradient(180deg, #fbfdff 0%, var(--bg) 48%, #ffffff 100%);
-      color: var(--graphite);
+      color: var(--text);
       line-height: 1.55;
       overflow-x: hidden;
+      background:
+        radial-gradient(circle at 9% 0%, rgba(33, 196, 199, 0.18), transparent 32%),
+        radial-gradient(circle at 92% 5%, rgba(36, 120, 255, 0.16), transparent 34%),
+        linear-gradient(180deg, #fbfdff 0%, var(--bg) 45%, #ffffff 100%);
     }
 
     a {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
     }
 
     button,
@@ -67,38 +64,13 @@
       margin: 0 auto;
     }
 
-    .section {
-      padding: 96px 0;
+    section {
+      padding: 92px 0;
       position: relative;
     }
 
-    .section.compact {
+    .compact {
       padding: 70px 0;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 13px;
-      border: 1px solid rgba(33, 196, 199, 0.32);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.76);
-      color: var(--navy-2);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      box-shadow: 0 10px 30px rgba(7, 26, 51, 0.05);
-      backdrop-filter: blur(16px);
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--cyan);
-      box-shadow: 0 0 0 6px rgba(33, 196, 199, 0.15);
     }
 
     h1,
@@ -110,9 +82,8 @@
     }
 
     h1 {
-      font-size: clamp(54px, 8vw, 104px);
-      margin-top: 22px;
-      margin-bottom: 14px;
+      font-size: clamp(56px, 8vw, 108px);
+      margin: 22px 0 14px;
     }
 
     h2 {
@@ -126,15 +97,43 @@
       letter-spacing: -0.035em;
     }
 
+    p {
+      color: #4b5d71;
+    }
+
     .lead {
-      font-size: clamp(18px, 2.2vw, 23px);
+      font-size: clamp(18px, 2.1vw, 23px);
+      max-width: 820px;
       color: #405169;
-      max-width: 780px;
       letter-spacing: -0.015em;
     }
 
     .muted {
       color: var(--muted);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      border: 1px solid rgba(33, 196, 199, 0.32);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 10px 30px rgba(7, 26, 51, 0.05);
+      backdrop-filter: blur(14px);
+      color: var(--navy2);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 0 6px rgba(33, 196, 199, 0.15);
     }
 
     .grid {
@@ -154,14 +153,27 @@
       grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 42px;
+    }
+
+    .section-head .lead {
+      font-size: 18px;
+      max-width: 540px;
+    }
+
     .card {
       background: rgba(255, 255, 255, 0.86);
-      border: 1px solid rgba(12, 39, 72, 0.1);
-      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
       padding: 28px;
-      box-shadow: var(--shadow-soft);
+      box-shadow: var(--soft-shadow);
       backdrop-filter: blur(18px);
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      transition: 0.25s ease;
       position: relative;
       overflow: hidden;
     }
@@ -169,7 +181,8 @@
     .card::after {
       content: "";
       position: absolute;
-      inset: auto -30% -45% auto;
+      right: -70px;
+      bottom: -80px;
       width: 170px;
       height: 170px;
       border-radius: 50%;
@@ -189,28 +202,25 @@
       border-radius: 15px;
       display: grid;
       place-items: center;
-      color: var(--navy);
-      background:
-        linear-gradient(135deg, rgba(33, 196, 199, 0.18), rgba(36, 120, 255, 0.1)),
-        #ffffff;
+      background: linear-gradient(135deg, rgba(33, 196, 199, 0.18), rgba(36, 120, 255, 0.1)), #ffffff;
       border: 1px solid rgba(33, 196, 199, 0.2);
       margin-bottom: 18px;
-      font-weight: 900;
+      color: var(--navy);
+      font-weight: 950;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
       min-height: 50px;
       padding: 14px 20px;
       border-radius: 999px;
       border: 1px solid transparent;
-      cursor: pointer;
-      font-weight: 800;
+      font-weight: 850;
       letter-spacing: -0.02em;
-      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+      cursor: pointer;
+      transition: 0.22s ease;
     }
 
     .btn:hover {
@@ -218,13 +228,9 @@
     }
 
     .btn-primary {
-      color: #fff;
+      color: #ffffff;
       background: linear-gradient(135deg, var(--navy), var(--blue));
       box-shadow: 0 16px 36px rgba(36, 120, 255, 0.26);
-    }
-
-    .btn-primary:hover {
-      box-shadow: 0 22px 48px rgba(36, 120, 255, 0.34);
     }
 
     .btn-secondary {
@@ -234,32 +240,18 @@
       box-shadow: 0 12px 30px rgba(7, 26, 51, 0.07);
     }
 
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 28px;
-      margin-bottom: 42px;
-    }
-
-    .section-head .lead {
-      max-width: 520px;
-      font-size: 18px;
-    }
-
     .reveal {
       opacity: 0;
       transform: translateY(22px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transition: 0.8s ease;
     }
 
     .reveal.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: none;
     }
 
-    /* Header */
-    .header {
+    header {
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -273,17 +265,17 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      gap: 16px;
     }
 
     .logo {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       gap: 12px;
-      font-weight: 950;
-      color: var(--navy);
-      letter-spacing: -0.045em;
       font-size: 22px;
+      font-weight: 950;
+      letter-spacing: -0.045em;
+      color: var(--navy);
     }
 
     .logo-mark {
@@ -292,7 +284,7 @@
       border-radius: 14px;
       display: grid;
       place-items: center;
-      color: white;
+      color: #ffffff;
       background:
         radial-gradient(circle at 72% 22%, rgba(255, 255, 255, 0.35), transparent 28%),
         linear-gradient(135deg, var(--navy), var(--cyan));
@@ -307,83 +299,62 @@
     .menu {
       display: flex;
       align-items: center;
-      gap: 22px;
-      font-size: 14px;
+      gap: 18px;
       color: #4d5f73;
-      font-weight: 750;
+      font-size: 14px;
+      font-weight: 800;
     }
 
     .menu a {
-      transition: color 0.2s ease;
+      white-space: nowrap;
     }
 
     .menu a:hover {
       color: var(--navy);
     }
 
-    .mobile-toggle {
+    .burger {
       display: none;
       width: 44px;
       height: 44px;
       border-radius: 14px;
       border: 1px solid var(--line);
-      background: white;
+      background: #ffffff;
       color: var(--navy);
       cursor: pointer;
     }
 
-    /* Hero */
     .hero {
       min-height: calc(100vh - 76px);
       padding: 86px 0 76px;
       display: flex;
       align-items: center;
-      position: relative;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 5% -18% auto auto;
-      width: 560px;
-      height: 560px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(33, 196, 199, 0.18), transparent 70%);
-      pointer-events: none;
-      filter: blur(4px);
     }
 
     .hero-grid {
       display: grid;
       grid-template-columns: 1.02fr 0.98fr;
-      align-items: center;
       gap: 54px;
-    }
-
-    .hero-copy {
-      position: relative;
-      z-index: 2;
+      align-items: center;
     }
 
     .hero-subtitle {
       font-size: clamp(25px, 3.8vw, 46px);
-      color: var(--navy-2);
+      font-weight: 950;
       line-height: 1.12;
       letter-spacing: -0.055em;
-      font-weight: 900;
-      max-width: 760px;
+      color: var(--navy2);
       margin-bottom: 18px;
     }
 
     .hero-text {
       font-size: 19px;
-      color: #48596d;
       max-width: 680px;
       margin-bottom: 24px;
+      color: #48596d;
     }
 
-    .hero-quote {
-      position: relative;
+    .quote {
       margin: 26px 0;
       padding: 18px 20px 18px 22px;
       border-left: 4px solid var(--cyan);
@@ -391,23 +362,21 @@
       border-radius: 0 18px 18px 0;
       box-shadow: 0 16px 45px rgba(7, 26, 51, 0.06);
       color: var(--navy);
-      font-weight: 850;
-      letter-spacing: -0.02em;
+      font-weight: 900;
       max-width: 620px;
     }
 
-    .hero-actions {
+    .actions {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin: 28px 0 28px;
+      margin: 28px 0;
     }
 
     .mini-metrics {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 12px;
-      max-width: 700px;
     }
 
     .mini-metric {
@@ -421,50 +390,47 @@
     .mini-metric strong {
       display: block;
       color: var(--navy);
-      font-size: 21px;
+      font-size: 22px;
       line-height: 1;
-      margin-bottom: 5px;
     }
 
     .mini-metric span {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 720;
-      line-height: 1.25;
       display: block;
+      margin-top: 5px;
+      font-size: 12px;
+      font-weight: 780;
+      color: var(--muted);
+      line-height: 1.25;
     }
 
-    /* Dashboard Mockup */
-    .mockup-wrap {
+    .mock-wrap {
       position: relative;
-      z-index: 2;
     }
 
-    .mockup-glow {
+    .mock-glow {
       position: absolute;
       inset: 10% -7% -6% 4%;
       border-radius: 42px;
       background: linear-gradient(135deg, rgba(33, 196, 199, 0.22), rgba(36, 120, 255, 0.18));
       filter: blur(34px);
-      opacity: 0.82;
     }
 
-    .platform-mockup {
+    .mock {
       position: relative;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.7)),
-        radial-gradient(circle at 10% 10%, rgba(33, 196, 199, 0.18), transparent 42%);
-      border: 1px solid rgba(255, 255, 255, 0.84);
       border-radius: 36px;
-      box-shadow: var(--shadow);
       overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.72)),
+        radial-gradient(circle at 10% 10%, rgba(33, 196, 199, 0.18), transparent 42%);
       backdrop-filter: blur(24px);
     }
 
-    .mockup-top {
+    .mock-top {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       padding: 18px 20px;
       border-bottom: 1px solid rgba(12, 39, 72, 0.08);
       background: rgba(255, 255, 255, 0.62);
@@ -478,45 +444,48 @@
     .traffic span {
       width: 10px;
       height: 10px;
-      border-radius: 999px;
+      border-radius: 50%;
       background: rgba(7, 26, 51, 0.18);
     }
 
-    .mockup-title {
-      font-size: 13px;
-      font-weight: 850;
-      color: var(--navy);
+    .chip {
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: var(--soft);
+      font-size: 12px;
+      font-weight: 800;
+      color: #4d5f73;
     }
 
-    .mockup-body {
+    .mock-body {
       padding: 22px;
       display: grid;
       gap: 16px;
     }
 
-    .score-card {
+    .score {
       padding: 22px;
       border-radius: 26px;
       background: linear-gradient(135deg, var(--navy), #123c70);
-      color: white;
-      position: relative;
+      color: #ffffff;
       overflow: hidden;
+      position: relative;
     }
 
-    .score-card::before {
+    .score::before {
       content: "";
       position: absolute;
+      right: -80px;
+      top: -100px;
       width: 230px;
       height: 230px;
       border-radius: 50%;
-      right: -80px;
-      top: -100px;
       background: radial-gradient(circle, rgba(33, 196, 199, 0.44), transparent 66%);
     }
 
     .score-row {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       display: flex;
       justify-content: space-between;
       gap: 18px;
@@ -526,7 +495,7 @@
     .score-label {
       color: rgba(255, 255, 255, 0.76);
       font-size: 13px;
-      font-weight: 750;
+      font-weight: 800;
     }
 
     .score-number {
@@ -545,31 +514,30 @@
       border: 1px solid rgba(33, 196, 199, 0.38);
       color: #dff9f8;
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 850;
     }
 
-    .pulse-ring {
+    .ring {
       width: 96px;
       height: 96px;
       border-radius: 50%;
       display: grid;
       place-items: center;
-      background:
-        conic-gradient(var(--cyan) 0 74%, rgba(255, 255, 255, 0.15) 74% 100%);
+      background: conic-gradient(var(--cyan) 0 74%, rgba(255, 255, 255, 0.15) 74% 100%);
       box-shadow: 0 0 0 9px rgba(255, 255, 255, 0.06);
     }
 
-    .pulse-ring-inner {
+    .ring div {
       width: 70px;
       height: 70px;
       border-radius: 50%;
       background: var(--navy);
       display: grid;
       place-items: center;
-      font-weight: 900;
+      font-weight: 950;
     }
 
-    .patient-card {
+    .patient {
       display: grid;
       grid-template-columns: 58px 1fr;
       gap: 15px;
@@ -585,23 +553,13 @@
       border-radius: 20px;
       display: grid;
       place-items: center;
-      background:
-        radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.9), transparent 30%),
-        linear-gradient(135deg, rgba(36, 120, 255, 0.2), rgba(33, 196, 199, 0.22));
+      background: linear-gradient(135deg, rgba(36, 120, 255, 0.2), rgba(33, 196, 199, 0.22));
       border: 1px solid rgba(33, 196, 199, 0.2);
     }
 
     .avatar svg {
       width: 32px;
-      height: 32px;
       color: var(--navy);
-    }
-
-    .patient-card strong {
-      display: block;
-      color: var(--navy);
-      font-size: 16px;
-      margin-bottom: 4px;
     }
 
     .chips {
@@ -611,35 +569,21 @@
       margin-top: 10px;
     }
 
-    .chip {
-      padding: 6px 9px;
-      border-radius: 999px;
-      background: var(--bg-soft);
-      color: #4d5f73;
-      font-size: 12px;
-      font-weight: 760;
-      border: 1px solid rgba(12, 39, 72, 0.06);
-    }
-
-    .mockup-grid {
+    .mock-grid {
       display: grid;
       grid-template-columns: 1fr 0.86fr;
       gap: 16px;
     }
 
-    .competency-card,
-    .next-card {
+    .mock-card {
       padding: 18px;
       border-radius: 24px;
       background: rgba(255, 255, 255, 0.78);
       border: 1px solid rgba(12, 39, 72, 0.09);
     }
 
-    .competency-card h4,
-    .next-card h4 {
-      color: var(--navy);
-      margin-bottom: 14px;
-      letter-spacing: -0.03em;
+    .next-card {
+      background: linear-gradient(180deg, rgba(223, 249, 248, 0.66), rgba(255, 255, 255, 0.76));
     }
 
     .bar {
@@ -649,89 +593,77 @@
     .bar-top {
       display: flex;
       justify-content: space-between;
-      gap: 8px;
-      color: #4a5b70;
       font-size: 12px;
-      font-weight: 780;
+      font-weight: 800;
+      color: #4a5b70;
       margin-bottom: 7px;
     }
 
-    .bar-track {
+    .track {
       height: 8px;
       border-radius: 999px;
       background: rgba(12, 39, 72, 0.08);
       overflow: hidden;
     }
 
-    .bar-fill {
+    .fill {
       height: 100%;
       width: var(--w);
-      border-radius: inherit;
       background: linear-gradient(90deg, var(--cyan), var(--blue));
     }
 
-    .next-card {
-      background: linear-gradient(180deg, rgba(223, 249, 248, 0.66), rgba(255, 255, 255, 0.76));
-    }
-
-    .next-card .status {
-      margin-top: 16px;
-      padding: 12px;
-      border-radius: 16px;
-      color: var(--navy);
-      background: white;
-      border: 1px solid rgba(33, 196, 199, 0.18);
-      font-size: 13px;
-      font-weight: 820;
-    }
-
-    .ecg-line {
+    .ecg {
       height: 56px;
       margin-top: 12px;
     }
 
-    .ecg-line svg {
+    .ecg svg {
       width: 100%;
       height: 100%;
     }
 
-    /* Problem */
-    .problem-cards {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+    .status {
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 16px;
+      background: #ffffff;
+      border: 1px solid rgba(33, 196, 199, 0.18);
+      font-size: 13px;
+      font-weight: 850;
+      color: var(--navy);
     }
 
-    .small-card {
+    .problem-cards {
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 34px;
+    }
+
+    .small {
       min-height: 132px;
       padding: 22px;
     }
 
-    .small-card strong {
+    .small strong {
       display: block;
       color: var(--navy);
       font-size: 17px;
-      letter-spacing: -0.025em;
       margin-bottom: 8px;
+      letter-spacing: -0.025em;
     }
 
-    .comparison {
+    .compare {
       margin-top: 34px;
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       gap: 22px;
-      align-items: stretch;
     }
 
     .compare-box {
       padding: 30px;
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(12, 39, 72, 0.1);
+      border-radius: var(--r);
+      border: 1px solid var(--line);
       background: rgba(255, 255, 255, 0.82);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .compare-box h3 {
-      font-size: 28px;
-      margin-bottom: 18px;
+      box-shadow: var(--soft-shadow);
     }
 
     .compare-box ul {
@@ -739,48 +671,40 @@
       display: grid;
       gap: 11px;
       color: #546579;
-      font-weight: 680;
-    }
-
-    .compare-box li {
-      display: flex;
-      gap: 10px;
-      align-items: center;
+      font-weight: 700;
     }
 
     .compare-box li::before {
       content: "";
+      display: inline-block;
       width: 8px;
       height: 8px;
       border-radius: 50%;
       background: var(--cyan);
-      flex: 0 0 auto;
+      margin-right: 10px;
     }
 
-    .gap-badge {
+    .gap {
       width: 170px;
       border-radius: 30px;
       display: grid;
       place-items: center;
       text-align: center;
       padding: 18px;
-      color: white;
-      font-weight: 900;
-      letter-spacing: -0.035em;
+      color: #ffffff;
+      font-weight: 950;
       background:
         radial-gradient(circle at 70% 20%, rgba(255, 255, 255, 0.22), transparent 34%),
         linear-gradient(135deg, var(--red), var(--navy));
       box-shadow: 0 25px 55px rgba(143, 29, 63, 0.24);
     }
 
-    /* Solution flow */
     .flow-wrap {
       padding: 26px;
-      border-radius: var(--radius-xl);
-      background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(223, 249, 248, 0.56));
+      border-radius: var(--r2);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(223, 249, 248, 0.56));
       border: 1px solid rgba(12, 39, 72, 0.09);
-      box-shadow: var(--shadow-soft);
+      box-shadow: var(--soft-shadow);
       overflow-x: auto;
     }
 
@@ -818,28 +742,18 @@
       z-index: 2;
     }
 
-    .flow-icon {
+    .flow-step span {
       width: 34px;
       height: 34px;
       border-radius: 12px;
       display: grid;
       place-items: center;
       margin-bottom: 9px;
-      background: var(--cyan-soft);
+      background: #dff9f8;
       color: var(--navy);
       font-size: 16px;
     }
 
-    /* Modules */
-    .module-card {
-      min-height: 300px;
-    }
-
-    .module-card p {
-      color: #59697c;
-    }
-
-    /* Interactive case */
     .case-layout {
       display: grid;
       grid-template-columns: 0.85fr 1.15fr;
@@ -849,8 +763,8 @@
 
     .case-panel {
       background: var(--navy);
-      color: white;
-      border-radius: var(--radius-xl);
+      color: #ffffff;
+      border-radius: var(--r2);
       padding: 30px;
       box-shadow: var(--shadow);
       position: sticky;
@@ -858,20 +772,9 @@
       overflow: hidden;
     }
 
-    .case-panel::before {
-      content: "";
-      position: absolute;
-      inset: -120px -100px auto auto;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(33, 196, 199, 0.32), transparent 68%);
-      border-radius: 50%;
-    }
-
     .case-panel h3 {
-      color: white;
+      color: #ffffff;
       font-size: 30px;
-      position: relative;
     }
 
     .case-panel p,
@@ -884,7 +787,6 @@
       display: grid;
       gap: 10px;
       margin-top: 20px;
-      position: relative;
     }
 
     .case-panel li {
@@ -894,17 +796,19 @@
       border-radius: 15px;
     }
 
-    .case-tabs {
+    .case-tabs,
+    .audience-tabs {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       margin-bottom: 18px;
     }
 
-    .case-tab {
+    .case-tab,
+    .audience-tab {
       padding: 12px 14px;
       border: 1px solid rgba(12, 39, 72, 0.12);
-      background: white;
+      background: #ffffff;
       color: #526377;
       border-radius: 999px;
       cursor: pointer;
@@ -912,28 +816,26 @@
       transition: 0.2s ease;
     }
 
-    .case-tab.active {
+    .case-tab.active,
+    .audience-tab.active {
       background: linear-gradient(135deg, var(--navy), var(--blue));
-      color: white;
+      color: #ffffff;
       box-shadow: 0 12px 28px rgba(36, 120, 255, 0.22);
     }
 
-    .case-content {
+    .case-content,
+    .audience-panel {
       min-height: 350px;
       padding: 32px;
-      border-radius: var(--radius-xl);
+      border-radius: var(--r2);
       background: rgba(255, 255, 255, 0.88);
       border: 1px solid rgba(12, 39, 72, 0.1);
-      box-shadow: var(--shadow-soft);
+      box-shadow: var(--soft-shadow);
     }
 
-    .case-content h3 {
-      font-size: 33px;
-    }
-
-    .case-content-grid {
+    .case-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 14px;
       margin-top: 24px;
     }
@@ -943,12 +845,6 @@
       border-radius: 18px;
       background: var(--bg);
       border: 1px solid rgba(12, 39, 72, 0.08);
-    }
-
-    .case-mini strong {
-      display: block;
-      color: var(--navy);
-      margin-bottom: 7px;
     }
 
     .case-result {
@@ -961,7 +857,7 @@
     .result-score {
       padding: 22px;
       border-radius: 22px;
-      color: white;
+      color: #ffffff;
       background: linear-gradient(135deg, var(--navy), var(--cyan));
     }
 
@@ -976,7 +872,7 @@
     .result-list {
       padding: 22px;
       border-radius: 22px;
-      background: var(--bg-soft);
+      background: var(--soft);
       border: 1px solid rgba(12, 39, 72, 0.08);
     }
 
@@ -984,14 +880,13 @@
       display: inline-flex;
       padding: 6px 9px;
       border-radius: 999px;
-      background: white;
+      background: #ffffff;
       color: var(--navy);
       margin: 5px 5px 0 0;
       font-size: 12px;
       font-weight: 790;
     }
 
-    /* Skills */
     .skills-layout {
       display: grid;
       grid-template-columns: 1.05fr 0.95fr;
@@ -1000,10 +895,10 @@
     }
 
     .skill-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(2, 1fr);
     }
 
-    .skill-pill {
+    .skill {
       padding: 18px;
       border-radius: 20px;
       background: rgba(255, 255, 255, 0.8);
@@ -1016,13 +911,13 @@
       color: var(--navy);
     }
 
-    .skill-pill span {
+    .skill span {
       width: 28px;
       height: 28px;
       border-radius: 10px;
       display: grid;
       place-items: center;
-      background: var(--cyan-soft);
+      background: #dff9f8;
       color: var(--navy);
       flex: 0 0 auto;
     }
@@ -1040,21 +935,24 @@
       margin: 10px auto 20px;
     }
 
-    .readiness-box {
+    .ready {
       padding: 24px;
       border-radius: 24px;
       background: linear-gradient(135deg, rgba(7, 26, 51, 0.95), rgba(12, 39, 72, 0.92));
-      color: white;
+      color: #ffffff;
       margin-top: 18px;
     }
 
-    .readiness-box strong {
+    .ready strong {
       display: block;
       font-size: 25px;
       margin-bottom: 8px;
     }
 
-    /* Timeline */
+    .ready p {
+      color: rgba(255, 255, 255, 0.78);
+    }
+
     .timeline {
       position: relative;
       display: grid;
@@ -1085,7 +983,7 @@
       border-radius: 18px;
       display: grid;
       place-items: center;
-      color: white;
+      color: #ffffff;
       background: linear-gradient(135deg, var(--navy), var(--blue));
       font-weight: 950;
       box-shadow: 0 14px 28px rgba(36, 120, 255, 0.22);
@@ -1097,20 +995,14 @@
       border-radius: 22px;
       background: rgba(255, 255, 255, 0.82);
       border: 1px solid rgba(12, 39, 72, 0.09);
-      box-shadow: var(--shadow-soft);
+      box-shadow: var(--soft-shadow);
     }
 
-    .week-card h3 {
-      font-size: 22px;
-      margin-bottom: 7px;
-    }
-
-    /* Social lift */
-    .lift {
+    .dark-panel {
       background:
         radial-gradient(circle at 10% 10%, rgba(33, 196, 199, 0.12), transparent 32%),
         linear-gradient(135deg, var(--navy), #0f355e);
-      color: white;
+      color: #ffffff;
       border-radius: 44px;
       padding: 58px;
       box-shadow: var(--shadow);
@@ -1118,31 +1010,18 @@
       position: relative;
     }
 
-    .lift::after {
-      content: "";
-      position: absolute;
-      right: -120px;
-      top: -140px;
-      width: 360px;
-      height: 360px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(33, 196, 199, 0.3), transparent 70%);
+    .dark-panel h2,
+    .dark-panel h3 {
+      color: #ffffff;
     }
 
-    .lift h2,
-    .lift h3 {
-      color: white;
-    }
-
-    .lift .lead {
+    .dark-panel .lead {
       color: rgba(255, 255, 255, 0.76);
     }
 
     .lift-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       margin-top: 32px;
-      position: relative;
-      z-index: 1;
     }
 
     .lift-card {
@@ -1165,8 +1044,6 @@
     }
 
     .lift-quote {
-      position: relative;
-      z-index: 1;
       margin-top: 28px;
       padding: 22px;
       border-radius: 22px;
@@ -1176,39 +1053,9 @@
       letter-spacing: -0.02em;
     }
 
-    /* Audience tabs */
-    .audience-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 22px;
-    }
-
-    .audience-tab {
-      padding: 13px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(12, 39, 72, 0.12);
-      background: white;
-      cursor: pointer;
-      color: #526377;
-      font-weight: 850;
-      transition: 0.2s ease;
-    }
-
-    .audience-tab.active {
-      background: var(--navy);
-      color: white;
-      box-shadow: 0 16px 34px rgba(7, 26, 51, 0.18);
-    }
-
     .audience-panel {
       display: none;
-      padding: 34px;
-      border-radius: var(--radius-xl);
-      background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(223, 249, 248, 0.44));
-      border: 1px solid rgba(12, 39, 72, 0.09);
-      box-shadow: var(--shadow-soft);
+      min-height: auto;
     }
 
     .audience-panel.active {
@@ -1230,14 +1077,14 @@
     .audience-panel ul {
       list-style: none;
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 14px;
       margin-top: 20px;
     }
 
     .audience-panel li {
       padding: 18px;
-      background: white;
+      background: #ffffff;
       border-radius: 18px;
       border: 1px solid rgba(12, 39, 72, 0.07);
       color: #4b5d71;
@@ -1251,9 +1098,8 @@
       font-weight: 950;
     }
 
-    /* MVP */
     .mvp-grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(4, 1fr);
     }
 
     .mvp-item {
@@ -1267,11 +1113,10 @@
     }
 
     .mvp-item span {
-      display: block;
       width: 34px;
       height: 34px;
       border-radius: 12px;
-      background: var(--cyan-soft);
+      background: #dff9f8;
       color: var(--navy);
       display: grid;
       place-items: center;
@@ -1279,18 +1124,17 @@
       font-weight: 950;
     }
 
-    /* Metrics */
     .metrics {
-      grid-template-columns: repeat(7, minmax(0, 1fr));
+      grid-template-columns: repeat(7, 1fr);
     }
 
     .metric-card {
       min-height: 158px;
       padding: 23px 18px;
       border-radius: 24px;
-      background: white;
+      background: #ffffff;
       border: 1px solid rgba(12, 39, 72, 0.08);
-      box-shadow: var(--shadow-soft);
+      box-shadow: var(--soft-shadow);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -1311,7 +1155,6 @@
       line-height: 1.25;
     }
 
-    /* Why now + Grant */
     .big-panel {
       border-radius: 44px;
       padding: 58px;
@@ -1319,48 +1162,170 @@
         radial-gradient(circle at 90% 8%, rgba(36, 120, 255, 0.12), transparent 30%),
         linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(238, 245, 250, 0.76));
       border: 1px solid rgba(12, 39, 72, 0.08);
-      box-shadow: var(--shadow-soft);
+      box-shadow: var(--soft-shadow);
     }
 
-    .value-card {
-      min-height: 190px;
+    .budget-wrap {
+      overflow-x: auto;
+      border-radius: 26px;
+      border: 1px solid rgba(12, 39, 72, 0.09);
+      box-shadow: var(--soft-shadow);
+      background: #ffffff;
     }
 
-    /* CTA + form */
+    .budget {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+      background: #ffffff;
+    }
+
+    .budget th,
+    .budget td {
+      padding: 18px 20px;
+      text-align: left;
+      border-bottom: 1px solid rgba(12, 39, 72, 0.08);
+      vertical-align: top;
+    }
+
+    .budget th {
+      color: var(--navy);
+      background: var(--soft);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .budget td {
+      color: #4d5f73;
+      font-weight: 650;
+    }
+
+    .budget td:last-child,
+    .budget th:last-child {
+      text-align: right;
+      color: var(--navy);
+      font-weight: 950;
+      white-space: nowrap;
+    }
+
+    .total {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+      padding: 24px;
+      border-radius: 26px;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      box-shadow: 0 20px 48px rgba(36, 120, 255, 0.22);
+    }
+
+    .total h3 {
+      color: #ffffff;
+    }
+
+    .total p {
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    .total strong {
+      font-size: 38px;
+      letter-spacing: -0.05em;
+      line-height: 1;
+    }
+
+    .team-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .team-card {
+      min-height: 420px;
+      border-radius: 34px;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(12, 39, 72, 0.1);
+      box-shadow: var(--soft-shadow);
+      overflow: hidden;
+      transition: 0.25s ease;
+    }
+
+    .team-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 26px 70px rgba(7, 26, 51, 0.12);
+      border-color: rgba(33, 196, 199, 0.34);
+    }
+
+    .team-photo {
+      width: 100%;
+      height: 250px;
+      background: linear-gradient(135deg, var(--navy), var(--cyan));
+      overflow: hidden;
+    }
+
+    .team-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .fallback {
+      width: 100%;
+      height: 100%;
+      display: none;
+      place-items: center;
+      color: #ffffff;
+      font-size: 48px;
+      font-weight: 950;
+      letter-spacing: -0.06em;
+    }
+
+    .team-body {
+      padding: 26px;
+    }
+
+    .team-body h3 {
+      font-size: 28px;
+    }
+
+    .role {
+      display: inline-flex;
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: #dff9f8;
+      color: var(--navy);
+      font-size: 13px;
+      font-weight: 850;
+      margin-bottom: 16px;
+    }
+
     .cta {
       background:
         radial-gradient(circle at 14% 20%, rgba(33, 196, 199, 0.18), transparent 34%),
         radial-gradient(circle at 84% 4%, rgba(143, 29, 63, 0.12), transparent 35%),
         linear-gradient(135deg, var(--navy), #102d4d);
-      color: white;
+      color: #ffffff;
       border-radius: 48px;
       padding: 64px;
       box-shadow: var(--shadow);
-      position: relative;
       overflow: hidden;
     }
 
-    .cta h2 {
-      color: white;
-      max-width: 850px;
+    .cta h2,
+    .cta h3 {
+      color: #ffffff;
     }
 
     .cta .lead {
       color: rgba(255, 255, 255, 0.76);
-      max-width: 760px;
-    }
-
-    .cta-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 28px;
     }
 
     .cta .btn-secondary {
       background: rgba(255, 255, 255, 0.12);
       border-color: rgba(255, 255, 255, 0.24);
-      color: white;
+      color: #ffffff;
     }
 
     .form-card {
@@ -1374,7 +1339,7 @@
 
     .form-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 14px;
     }
 
@@ -1399,11 +1364,10 @@
       width: 100%;
       border: 1px solid rgba(255, 255, 255, 0.18);
       background: rgba(255, 255, 255, 0.12);
-      color: white;
+      color: #ffffff;
       outline: none;
       border-radius: 16px;
       padding: 14px 15px;
-      transition: border-color 0.2s ease, background 0.2s ease;
     }
 
     .field select option {
@@ -1413,13 +1377,6 @@
     .field input::placeholder,
     .field textarea::placeholder {
       color: rgba(255, 255, 255, 0.48);
-    }
-
-    .field input:focus,
-    .field textarea:focus,
-    .field select:focus {
-      border-color: rgba(33, 196, 199, 0.8);
-      background: rgba(255, 255, 255, 0.16);
     }
 
     textarea {
@@ -1436,22 +1393,20 @@
       justify-content: space-between;
     }
 
-    .form-message {
+    .message {
       color: #dff9f8;
-      font-weight: 800;
+      font-weight: 850;
       display: none;
     }
 
-    .form-message.show {
+    .message.show {
       display: block;
-      animation: fadeUp 0.3s ease;
     }
 
-    /* Footer */
-    .footer {
+    footer {
       padding: 38px 0;
       border-top: 1px solid rgba(12, 39, 72, 0.08);
-      background: white;
+      background: #ffffff;
     }
 
     .footer-grid {
@@ -1461,17 +1416,11 @@
       align-items: start;
     }
 
-    .footer p {
-      color: var(--muted);
-      max-width: 760px;
-      margin-top: 12px;
-    }
-
-    .footer-contact {
+    .contacts {
       display: grid;
       gap: 8px;
       color: var(--navy);
-      font-weight: 800;
+      font-weight: 850;
     }
 
     .disclaimer {
@@ -1485,7 +1434,7 @@
       max-width: 920px;
     }
 
-    @media (max-width: 1120px) {
+    @media (max-width: 1160px) {
       .menu {
         display: none;
         position: absolute;
@@ -1496,7 +1445,7 @@
         border: 1px solid rgba(12, 39, 72, 0.09);
         border-radius: 24px;
         padding: 18px;
-        box-shadow: var(--shadow-soft);
+        box-shadow: var(--soft-shadow);
         flex-direction: column;
         align-items: stretch;
       }
@@ -1505,7 +1454,7 @@
         display: flex;
       }
 
-      .mobile-toggle {
+      .burger {
         display: block;
       }
 
@@ -1525,23 +1474,24 @@
       }
 
       .problem-cards,
-      .mvp-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .mvp-grid,
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .metrics {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(4, 1fr);
       }
 
       .lift-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .comparison {
+      .compare {
         grid-template-columns: 1fr;
       }
 
-      .gap-badge {
+      .gap {
         width: 100%;
         min-height: 90px;
       }
@@ -1552,8 +1502,8 @@
         width: min(100% - 26px, var(--max));
       }
 
-      .section {
-        padding: 70px 0;
+      section {
+        padding: 68px 0;
       }
 
       .hero {
@@ -1571,39 +1521,41 @@
       .mvp-grid,
       .metrics,
       .lift-grid,
-      .skill-grid {
+      .skill-grid,
+      .team-grid {
         grid-template-columns: 1fr;
       }
 
       .mini-metrics {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .mockup-grid,
-      .case-content-grid,
+      .mock-grid,
+      .case-grid,
       .case-result,
       .audience-panel ul,
       .form-grid,
-      .footer-grid {
+      .footer-grid,
+      .total {
         grid-template-columns: 1fr;
       }
 
-      .mockup-body {
+      .mock-body {
         padding: 16px;
       }
 
-      .platform-mockup,
-      .score-card,
+      .mock,
+      .score,
       .card,
       .big-panel,
       .cta,
-      .lift {
+      .dark-panel {
         border-radius: 26px;
       }
 
       .big-panel,
       .cta,
-      .lift {
+      .dark-panel {
         padding: 30px 22px;
       }
 
@@ -1619,8 +1571,7 @@
         min-width: 900px;
       }
 
-      .hero-actions,
-      .cta-actions {
+      .actions {
         display: grid;
       }
 
@@ -1628,25 +1579,19 @@
         width: 100%;
       }
 
-      .logo {
-        font-size: 20px;
-      }
-
-      .logo-mark {
-        width: 38px;
-        height: 38px;
+      .team-photo {
+        height: 300px;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- Header -->
-  <header class="header">
+  <header>
     <div class="container nav">
       <a class="logo" href="#top" aria-label="МедМост">
         <span class="logo-mark">
-          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
             <path d="M5 17h5l2-5 5 10 3-7h7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M8 24c4-1 6-3 8-6 2 3 4 5 8 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
           </svg>
@@ -1662,21 +1607,19 @@
         <a href="#intensive">Интенсив</a>
         <a href="#lift">Социальный лифт</a>
         <a href="#pilot">Пилот</a>
+        <a href="#budget">Смета</a>
+        <a href="#team">Команда</a>
       </nav>
 
       <a class="btn btn-primary" href="#contact">Запустить пилот</a>
-
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Открыть меню">
-        ☰
-      </button>
+      <button class="burger" id="burger" aria-label="Открыть меню">☰</button>
     </div>
   </header>
 
   <main id="top">
-    <!-- Hero -->
     <section class="hero">
       <div class="container hero-grid">
-        <div class="hero-copy reveal">
+        <div class="reveal">
           <span class="eyebrow">Цифровая платформа подготовки студентов-медиков к практике</span>
           <h1>МедМост</h1>
           <div class="hero-subtitle">Цифровой мост между медицинским вузом и первым рабочим местом врача</div>
@@ -1684,61 +1627,45 @@
             Платформа помогает студентам-медикам перейти от теоретического обучения к реальной клинической практике через ИИ-симуляции пациентов, тренажёр первичного приёма, медицинскую документацию, наставничество врачей и цифровой паспорт компетенций.
           </p>
 
-          <div class="hero-quote">
-            Медвуз учит будущего врача знать. МедМост помогает будущему врачу действовать.
-          </div>
+          <div class="quote">Медвуз учит будущего врача знать. МедМост помогает будущему врачу действовать.</div>
 
-          <div class="hero-actions">
+          <div class="actions">
             <a class="btn btn-primary" href="#contact">Запустить пилот</a>
             <a class="btn btn-secondary" href="#case">Посмотреть, как работает</a>
           </div>
 
           <div class="mini-metrics">
-            <div class="mini-metric">
-              <strong>30</strong>
-              <span>клинических кейсов в MVP</span>
-            </div>
-            <div class="mini-metric">
-              <strong>8</strong>
-              <span>недель практического интенсива</span>
-            </div>
-            <div class="mini-metric">
-              <strong>100</strong>
-              <span>цифровых паспортов компетенций</span>
-            </div>
-            <div class="mini-metric">
-              <strong>10</strong>
-              <span>врачей-наставников</span>
-            </div>
+            <div class="mini-metric"><strong>30</strong><span>клинических кейсов в MVP</span></div>
+            <div class="mini-metric"><strong>8</strong><span>недель практического интенсива</span></div>
+            <div class="mini-metric"><strong>100</strong><span>цифровых паспортов компетенций</span></div>
+            <div class="mini-metric"><strong>10</strong><span>врачей-наставников</span></div>
           </div>
         </div>
 
-        <div class="mockup-wrap reveal">
-          <div class="mockup-glow"></div>
-          <div class="platform-mockup">
-            <div class="mockup-top">
+        <div class="mock-wrap reveal">
+          <div class="mock-glow"></div>
+          <div class="mock">
+            <div class="mock-top">
               <div class="traffic"><span></span><span></span><span></span></div>
-              <div class="mockup-title">МедМост AI · симулятор приёма</div>
-              <div class="chip">Пилот</div>
+              <strong>МедМост AI · симулятор приёма</strong>
+              <span class="chip">Пилот</span>
             </div>
 
-            <div class="mockup-body">
-              <div class="score-card">
+            <div class="mock-body">
+              <div class="score">
                 <div class="score-row">
                   <div>
                     <div class="score-label">Clinical Readiness Score</div>
                     <div class="score-number">74/100</div>
                     <span class="score-pill">Готов к наставническому разбору</span>
                   </div>
-                  <div class="pulse-ring">
-                    <div class="pulse-ring-inner">74</div>
-                  </div>
+                  <div class="ring"><div>74</div></div>
                 </div>
               </div>
 
-              <div class="patient-card">
+              <div class="patient">
                 <div class="avatar">
-                  <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                  <svg viewBox="0 0 40 40" fill="none">
                     <circle cx="20" cy="14" r="7" stroke="currentColor" stroke-width="2.2"/>
                     <path d="M8 34c2-7 7-11 12-11s10 4 12 11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
                   </svg>
@@ -1754,31 +1681,35 @@
                 </div>
               </div>
 
-              <div class="mockup-grid">
-                <div class="competency-card">
+              <div class="mock-grid">
+                <div class="mock-card">
                   <h4>Компетенции</h4>
+
                   <div class="bar">
                     <div class="bar-top"><span>Анамнез</span><span>82%</span></div>
-                    <div class="bar-track"><div class="bar-fill" style="--w:82%"></div></div>
+                    <div class="track"><div class="fill" style="--w:82%"></div></div>
                   </div>
+
                   <div class="bar">
                     <div class="bar-top"><span>Клиническое мышление</span><span>68%</span></div>
-                    <div class="bar-track"><div class="bar-fill" style="--w:68%"></div></div>
+                    <div class="track"><div class="fill" style="--w:68%"></div></div>
                   </div>
+
                   <div class="bar">
                     <div class="bar-top"><span>Документация</span><span>61%</span></div>
-                    <div class="bar-track"><div class="bar-fill" style="--w:61%"></div></div>
+                    <div class="track"><div class="fill" style="--w:61%"></div></div>
                   </div>
+
                   <div class="bar">
                     <div class="bar-top"><span>Коммуникация</span><span>77%</span></div>
-                    <div class="bar-track"><div class="bar-fill" style="--w:77%"></div></div>
+                    <div class="track"><div class="fill" style="--w:77%"></div></div>
                   </div>
                 </div>
 
-                <div class="next-card">
+                <div class="mock-card next-card">
                   <h4>Следующий этап</h4>
                   <p class="muted">Выявить красные флаги и решить, нужна ли экстренная маршрутизация.</p>
-                  <div class="ecg-line">
+                  <div class="ecg">
                     <svg viewBox="0 0 240 70" fill="none">
                       <path d="M4 38H50L62 20L78 54L96 10L116 38H236" stroke="#21c4c7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -1789,11 +1720,11 @@
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- Problem -->
-    <section class="section" id="problem">
+    <section id="problem">
       <div class="container">
         <div class="section-head reveal">
           <div>
@@ -1807,18 +1738,18 @@
           В медицинском вузе студент изучает дисциплины, сдаёт экзамены и решает клинические задачи. Но на первом рабочем месте он сталкивается с другой реальностью: живой пациент, ограниченное время, ответственность, документация, коммуникация и необходимость принимать решения.
         </p>
 
-        <div class="grid problem-cards" style="margin-top: 34px;">
-          <div class="card small-card reveal"><strong>Реальный пациент говорит не по учебнику</strong><p class="muted">Жалобы неполные, формулировки бытовые, данные могут быть противоречивыми.</p></div>
-          <div class="card small-card reveal"><strong>На приём ограничено время</strong><p class="muted">Нужно быстро выделить главное и не потерять безопасность пациента.</p></div>
-          <div class="card small-card reveal"><strong>Нужно не пропустить красные флаги</strong><p class="muted">Молодой врач должен видеть признаки опасных сценариев.</p></div>
-          <div class="card small-card reveal"><strong>Нужно выбрать обследования</strong><p class="muted">Не всё подряд, а обоснованный минимум для клинического решения.</p></div>
-          <div class="card small-card reveal"><strong>Нужно оформить документацию</strong><p class="muted">Амбулаторная запись, направления, рекомендации и план наблюдения.</p></div>
-          <div class="card small-card reveal"><strong>Нужно объяснить план действий</strong><p class="muted">Пациент должен понять, что делать дальше и почему это важно.</p></div>
-          <div class="card small-card reveal"><strong>Нужно понимать маршрутизацию</strong><p class="muted">Когда вести амбулаторно, когда направить к специалисту или экстренно.</p></div>
-          <div class="card small-card reveal"><strong>Нужно принять решение</strong><p class="muted">Не растеряться в условиях неопределённости первого рабочего места.</p></div>
+        <div class="grid problem-cards">
+          <div class="card small reveal"><strong>Реальный пациент говорит не по учебнику</strong><p class="muted">Жалобы неполные, формулировки бытовые, данные могут быть противоречивыми.</p></div>
+          <div class="card small reveal"><strong>На приём ограничено время</strong><p class="muted">Нужно быстро выделить главное и не потерять безопасность пациента.</p></div>
+          <div class="card small reveal"><strong>Нужно не пропустить красные флаги</strong><p class="muted">Молодой врач должен видеть признаки опасных сценариев.</p></div>
+          <div class="card small reveal"><strong>Нужно выбрать обследования</strong><p class="muted">Не всё подряд, а обоснованный минимум для клинического решения.</p></div>
+          <div class="card small reveal"><strong>Нужно оформить документацию</strong><p class="muted">Амбулаторная запись, направления, рекомендации и план наблюдения.</p></div>
+          <div class="card small reveal"><strong>Нужно объяснить план действий</strong><p class="muted">Пациент должен понять, что делать дальше и почему это важно.</p></div>
+          <div class="card small reveal"><strong>Нужно понимать маршрутизацию</strong><p class="muted">Когда вести амбулаторно, когда направить к специалисту или экстренно.</p></div>
+          <div class="card small reveal"><strong>Нужно принять решение</strong><p class="muted">Не растеряться в условиях неопределённости первого рабочего места.</p></div>
         </div>
 
-        <div class="comparison reveal">
+        <div class="compare reveal">
           <div class="compare-box">
             <h3>Медицинский вуз</h3>
             <ul>
@@ -1831,9 +1762,7 @@
             </ul>
           </div>
 
-          <div class="gap-badge">
-            Разрыв, который закрывает МедМост
-          </div>
+          <div class="gap">Разрыв, который закрывает МедМост</div>
 
           <div class="compare-box">
             <h3>Первое рабочее место</h3>
@@ -1850,8 +1779,7 @@
       </div>
     </section>
 
-    <!-- Solution -->
-    <section class="section compact" id="solution">
+    <section class="compact" id="solution">
       <div class="container">
         <div class="section-head reveal">
           <div>
@@ -1863,16 +1791,16 @@
 
         <div class="flow-wrap reveal">
           <div class="flow">
-            <div class="flow-step"><div class="flow-icon">01</div>Пациент</div>
-            <div class="flow-step"><div class="flow-icon">02</div>Жалобы</div>
-            <div class="flow-step"><div class="flow-icon">03</div>Анамнез</div>
-            <div class="flow-step"><div class="flow-icon">04</div>Красные флаги</div>
-            <div class="flow-step"><div class="flow-icon">05</div>Обследования</div>
-            <div class="flow-step"><div class="flow-icon">06</div>Диагноз</div>
-            <div class="flow-step"><div class="flow-icon">07</div>Тактика</div>
-            <div class="flow-step"><div class="flow-icon">08</div>Документация</div>
-            <div class="flow-step"><div class="flow-icon">09</div>Follow-up</div>
-            <div class="flow-step"><div class="flow-icon">10</div>Разбор ошибок</div>
+            <div class="flow-step"><span>01</span>Пациент</div>
+            <div class="flow-step"><span>02</span>Жалобы</div>
+            <div class="flow-step"><span>03</span>Анамнез</div>
+            <div class="flow-step"><span>04</span>Красные флаги</div>
+            <div class="flow-step"><span>05</span>Обследования</div>
+            <div class="flow-step"><span>06</span>Диагноз</div>
+            <div class="flow-step"><span>07</span>Тактика</div>
+            <div class="flow-step"><span>08</span>Документация</div>
+            <div class="flow-step"><span>09</span>Follow-up</div>
+            <div class="flow-step"><span>10</span>Разбор ошибок</div>
           </div>
         </div>
 
@@ -1884,8 +1812,7 @@
       </div>
     </section>
 
-    <!-- Modules -->
-    <section class="section" id="platform">
+    <section id="platform">
       <div class="container">
         <div class="section-head reveal">
           <div>
@@ -1896,47 +1823,17 @@
         </div>
 
         <div class="grid grid-3">
-          <div class="card module-card reveal">
-            <div class="icon">AI</div>
-            <h3>ИИ-пациент</h3>
-            <p>Студент общается с виртуальным пациентом, который жалуется, уточняет, сомневается, забывает детали и реагирует как реальный человек.</p>
-          </div>
-
-          <div class="card module-card reveal">
-            <div class="icon">01</div>
-            <h3>Симулятор первичного приёма</h3>
-            <p>Кейс проходит по логике настоящего амбулаторного приёма: жалобы, анамнез, обследования, диагноз, тактика и рекомендации.</p>
-          </div>
-
-          <div class="card module-card reveal">
-            <div class="icon">DOC</div>
-            <h3>Тренажёр документации</h3>
-            <p>Студент учится оформлять амбулаторную карту, направления, рекомендации, повторный приём и план наблюдения.</p>
-          </div>
-
-          <div class="card module-card reveal">
-            <div class="icon">%</div>
-            <h3>Карта компетенций</h3>
-            <p>Платформа показывает не просто правильный ответ, а уровень навыков: анамнез, мышление, обследования, коммуникация, документация и безопасность пациента.</p>
-          </div>
-
-          <div class="card module-card reveal">
-            <div class="icon">MD</div>
-            <h3>Наставничество врачей</h3>
-            <p>ИИ даёт первичный разбор, а врачи-наставники помогают разобрать сложные кейсы и подготовиться к реальной практике.</p>
-          </div>
-
-          <div class="card module-card reveal">
-            <div class="icon">ID</div>
-            <h3>Цифровой паспорт компетенций</h3>
-            <p>Студент получает профиль готовности к практике, который можно использовать для стажировок, портфолио и первого трудоустройства.</p>
-          </div>
+          <div class="card reveal"><div class="icon">AI</div><h3>ИИ-пациент</h3><p>Студент общается с виртуальным пациентом, который жалуется, уточняет, сомневается, забывает детали и реагирует как реальный человек.</p></div>
+          <div class="card reveal"><div class="icon">01</div><h3>Симулятор первичного приёма</h3><p>Кейс проходит по логике настоящего амбулаторного приёма: жалобы, анамнез, обследования, диагноз, тактика и рекомендации.</p></div>
+          <div class="card reveal"><div class="icon">DOC</div><h3>Тренажёр документации</h3><p>Студент учится оформлять амбулаторную карту, направления, рекомендации, повторный приём и план наблюдения.</p></div>
+          <div class="card reveal"><div class="icon">%</div><h3>Карта компетенций</h3><p>Платформа показывает не просто правильный ответ, а уровень навыков: анамнез, мышление, обследования, коммуникация, документация и безопасность пациента.</p></div>
+          <div class="card reveal"><div class="icon">MD</div><h3>Наставничество врачей</h3><p>ИИ даёт первичный разбор, а врачи-наставники помогают разобрать сложные кейсы и подготовиться к реальной практике.</p></div>
+          <div class="card reveal"><div class="icon">ID</div><h3>Цифровой паспорт компетенций</h3><p>Студент получает профиль готовности к практике, который можно использовать для стажировок, портфолио и первого трудоустройства.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- Interactive Case -->
-    <section class="section compact" id="case">
+    <section class="compact" id="case">
       <div class="container">
         <div class="section-head reveal">
           <div>
@@ -1968,23 +1865,14 @@
               <button class="case-tab" data-step="6">Разбор</button>
             </div>
 
-            <div class="case-content" id="caseContent">
+            <div class="case-content">
               <h3 id="caseTitle">Жалобы</h3>
               <p class="lead" id="caseText" style="font-size: 19px;"></p>
 
-              <div class="case-content-grid">
-                <div class="case-mini">
-                  <strong>Что делает студент</strong>
-                  <p id="studentAction" class="muted"></p>
-                </div>
-                <div class="case-mini">
-                  <strong>Что оценивает платформа</strong>
-                  <p id="platformCheck" class="muted"></p>
-                </div>
-                <div class="case-mini">
-                  <strong>Типичная ошибка</strong>
-                  <p id="commonError" class="muted"></p>
-                </div>
+              <div class="case-grid">
+                <div class="case-mini"><strong>Что делает студент</strong><p id="studentAction" class="muted"></p></div>
+                <div class="case-mini"><strong>Что оценивает платформа</strong><p id="platformCheck" class="muted"></p></div>
+                <div class="case-mini"><strong>Типичная ошибка</strong><p id="commonError" class="muted"></p></div>
               </div>
 
               <div class="case-result">
@@ -1992,6 +1880,7 @@
                   <div>Clinical Readiness Score</div>
                   <strong>78/100</strong>
                 </div>
+
                 <div class="result-list">
                   <strong>После прохождения</strong>
                   <div>
@@ -2004,12 +1893,12 @@
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- Skills -->
-    <section class="section" id="skills">
+    <section id="skills">
       <div class="container">
         <div class="section-head reveal">
           <div>
@@ -2021,16 +1910,16 @@
 
         <div class="skills-layout">
           <div class="grid skill-grid reveal">
-            <div class="skill-pill"><span>1</span>Сбор жалоб и анамнеза</div>
-            <div class="skill-pill"><span>2</span>Клиническое мышление</div>
-            <div class="skill-pill"><span>3</span>Дифференциальная диагностика</div>
-            <div class="skill-pill"><span>4</span>Выбор обследований</div>
-            <div class="skill-pill"><span>5</span>Выявление красных флагов</div>
-            <div class="skill-pill"><span>6</span>Коммуникация с пациентом</div>
-            <div class="skill-pill"><span>7</span>Медицинская документация</div>
-            <div class="skill-pill"><span>8</span>Маршрутизация пациента</div>
-            <div class="skill-pill"><span>9</span>Безопасность пациента</div>
-            <div class="skill-pill"><span>10</span>Готовность к амбулаторному приёму</div>
+            <div class="skill"><span>1</span>Сбор жалоб и анамнеза</div>
+            <div class="skill"><span>2</span>Клиническое мышление</div>
+            <div class="skill"><span>3</span>Дифференциальная диагностика</div>
+            <div class="skill"><span>4</span>Выбор обследований</div>
+            <div class="skill"><span>5</span>Выявление красных флагов</div>
+            <div class="skill"><span>6</span>Коммуникация с пациентом</div>
+            <div class="skill"><span>7</span>Медицинская документация</div>
+            <div class="skill"><span>8</span>Маршрутизация пациента</div>
+            <div class="skill"><span>9</span>Безопасность пациента</div>
+            <div class="skill"><span>10</span>Готовность к амбулаторному приёму</div>
           </div>
 
           <div class="card radar-card reveal">
@@ -2049,17 +1938,12 @@
               <line x1="86" y1="86" x2="274" y2="274" stroke="rgba(12,39,72,.10)" stroke-width="2"/>
               <line x1="274" y1="86" x2="86" y2="274" stroke="rgba(12,39,72,.10)" stroke-width="2"/>
               <polygon points="180,62 260,104 286,184 236,254 160,275 88,224 102,132" fill="url(#radarFill)" stroke="#21c4c7" stroke-width="3"/>
-              <circle cx="180" cy="62" r="5" fill="#21c4c7"/>
-              <circle cx="260" cy="104" r="5" fill="#21c4c7"/>
-              <circle cx="286" cy="184" r="5" fill="#21c4c7"/>
-              <circle cx="236" cy="254" r="5" fill="#21c4c7"/>
-              <circle cx="160" cy="275" r="5" fill="#21c4c7"/>
-              <circle cx="88" cy="224" r="5" fill="#21c4c7"/>
-              <circle cx="102" cy="132" r="5" fill="#21c4c7"/>
             </svg>
+
             <h3>Карта компетенций</h3>
             <p class="muted">Показывает сильные стороны и зоны роста после каждого кейса.</p>
-            <div class="readiness-box">
+
+            <div class="ready">
               <strong>Clinical Readiness Score</strong>
               <p>Не официальная аттестация, а образовательный показатель готовности к практическим сценариям.</p>
             </div>
@@ -2068,8 +1952,7 @@
       </div>
     </section>
 
-    <!-- Intensive -->
-    <section class="section compact" id="intensive">
+    <section class="compact" id="intensive">
       <div class="container">
         <div class="section-head reveal">
           <div>
@@ -2092,41 +1975,35 @@
       </div>
     </section>
 
-    <!-- Social Lift -->
-    <section class="section" id="lift">
+    <section id="lift">
       <div class="container">
-        <div class="lift reveal">
+        <div class="dark-panel reveal">
           <span class="eyebrow">Социальный лифт</span>
-          <h2 style="margin-top: 22px;">Компетенции становятся доступом к возможностям</h2>
-          <p class="lead">
-            Лучшие участники получают цифровой паспорт компетенций, рекомендации наставников и доступ к партнёрским стажировкам, проектной практике, MedTech-командам и карьерным консультациям.
-          </p>
+          <h2 style="margin-top:22px">Компетенции становятся доступом к возможностям</h2>
+          <p class="lead">Лучшие участники получают цифровой паспорт компетенций, рекомендации наставников и доступ к партнёрским стажировкам, проектной практике, MedTech-командам и карьерным консультациям.</p>
 
           <div class="grid lift-grid">
             <div class="lift-card"><strong>Стажировки в клиниках</strong><p>Партнёрские форматы практики и наблюдения за работой специалистов.</p></div>
             <div class="lift-card"><strong>Проектная практика в MedTech</strong><p>Роли в образовательных, клинических и цифровых проектах.</p></div>
             <div class="lift-card"><strong>Наставники-врачи</strong><p>Разборы кейсов, карьерные консультации и подготовка к практике.</p></div>
-            <div class="lift-card"><strong>Demo Day</strong><p>Презентация лучших студентов партнёрам, клиникам и проектным командам.</p></div>
+            <div class="lift-card"><strong>Demo Day</strong><p>Презентация лучших студентов партнёрам и клиникам.</p></div>
             <div class="lift-card"><strong>Цифровое портфолио</strong><p>Подтверждённые кейсы, компетенции, сертификаты и рекомендации.</p></div>
-            <div class="lift-card"><strong>Рекомендации партнёрам</strong><p>Аккуратный доступ к возможностям без обещания гарантированного трудоустройства.</p></div>
+            <div class="lift-card"><strong>Рекомендации партнёрам</strong><p>Доступ к возможностям без обещания гарантированного трудоустройства.</p></div>
           </div>
 
-          <div class="lift-quote">
-            Возможности должны открываться не по знакомству, а по подтверждённым компетенциям.
-          </div>
+          <div class="lift-quote">Возможности должны открываться не по знакомству, а по подтверждённым компетенциям.</div>
         </div>
       </div>
     </section>
 
-    <!-- Audiences -->
-    <section class="section compact">
+    <section class="compact">
       <div class="container">
         <div class="section-head reveal">
           <div>
             <span class="eyebrow">Для кого</span>
             <h2>Одна платформа — разные роли в медицинском образовании</h2>
           </div>
-          <p class="lead">МедМост соединяет студентов, вузы, клиники и наставников вокруг практической подготовки к первому рабочему месту.</p>
+          <p class="lead">МедМост соединяет студентов, вузы, клиники и наставников вокруг практической подготовки.</p>
         </div>
 
         <div class="reveal">
@@ -2155,7 +2032,7 @@
               <li>аналитика образовательных дефицитов студентов</li>
               <li>банк клинических кейсов</li>
               <li>усиление практико-ориентированного образования</li>
-              <li>инструмент для проектной и внеучебной активности</li>
+              <li>инструмент для проектной активности</li>
             </ul>
           </div>
 
@@ -2184,15 +2061,14 @@
       </div>
     </section>
 
-    <!-- MVP -->
-    <section class="section" id="pilot">
+    <section id="pilot">
       <div class="container">
         <div class="section-head reveal">
           <div>
             <span class="eyebrow">MVP</span>
             <h2>Что входит в первый пилот</h2>
           </div>
-          <p class="lead">MVP создаётся как проверяемый пилот, который можно запустить в одном медицинском университете, а затем масштабировать на другие вузы и клиники.</p>
+          <p class="lead">MVP создаётся как проверяемый пилот, который можно запустить в одном медицинском университете, а затем масштабировать.</p>
         </div>
 
         <div class="grid mvp-grid">
@@ -2212,15 +2088,14 @@
       </div>
     </section>
 
-    <!-- Metrics -->
-    <section class="section compact">
+    <section class="compact">
       <div class="container">
         <div class="section-head reveal">
           <div>
             <span class="eyebrow">Метрики пилота</span>
             <h2>Результаты, которые можно измерить</h2>
           </div>
-          <p class="lead">Эти метрики позволяют оценить не только охват, но и реальный образовательный результат: активность студентов, прохождение симуляций, сформированные компетенции и готовность к следующему профессиональному шагу.</p>
+          <p class="lead">Эти метрики позволяют оценить охват и реальный образовательный результат: активность студентов, прохождение симуляций и сформированные компетенции.</p>
         </div>
 
         <div class="grid metrics">
@@ -2235,20 +2110,15 @@
       </div>
     </section>
 
-    <!-- Why now -->
-    <section class="section compact">
+    <section class="compact">
       <div class="container">
         <div class="big-panel reveal">
           <span class="eyebrow">Почему сейчас</span>
-          <h2 style="margin-top: 22px;">Медицина меняется быстрее, чем форматы подготовки молодых врачей</h2>
-          <p class="lead">
-            Здравоохранение становится цифровым, пациенты становятся требовательнее, клинические маршруты сложнее, а молодому врачу нужно быстрее адаптироваться к реальной практике. При этом значительная часть подготовки всё ещё строится вокруг пассивного обучения, тестов и экзаменов.
-          </p>
-          <p class="lead" style="margin-top: 18px;">
-            МедМост предлагает новый формат: безопасная симуляция, практическое действие, обратная связь, наставничество и цифровое подтверждение компетенций.
-          </p>
+          <h2 style="margin-top:22px">Медицина меняется быстрее, чем форматы подготовки молодых врачей</h2>
+          <p class="lead">Здравоохранение становится цифровым, пациенты становятся требовательнее, клинические маршруты сложнее, а молодому врачу нужно быстрее адаптироваться к реальной практике. При этом значительная часть подготовки всё ещё строится вокруг пассивного обучения, тестов и экзаменов.</p>
+          <p class="lead" style="margin-top:18px">МедМост предлагает новый формат: безопасная симуляция, практическое действие, обратная связь, наставничество и цифровое подтверждение компетенций.</p>
 
-          <div class="grid grid-3" style="margin-top: 34px;">
+          <div class="grid grid-3" style="margin-top:34px">
             <div class="card reveal"><div class="icon">01</div><h3>Больше практики до реального пациента</h3><p class="muted">Студент тренируется на цифровых сценариях до выхода на настоящее рабочее место.</p></div>
             <div class="card reveal"><div class="icon">02</div><h3>Больше обратной связи до первой ошибки</h3><p class="muted">Платформа показывает пропуски, риски и зоны роста в безопасной среде.</p></div>
             <div class="card reveal"><div class="icon">03</div><h3>Больше прозрачности в переходе к работе</h3><p class="muted">Компетенции фиксируются в цифровом паспорте и помогают двигаться к стажировкам.</p></div>
@@ -2257,8 +2127,7 @@
       </div>
     </section>
 
-    <!-- Grant value -->
-    <section class="section">
+    <section>
       <div class="container">
         <div class="section-head reveal">
           <div>
@@ -2269,27 +2138,133 @@
         </div>
 
         <div class="grid grid-3">
-          <div class="card value-card reveal"><div class="icon">1</div><h3>Снижает разрыв между теорией и практикой</h3><p class="muted">Студент отрабатывает реальные сценарии до первого рабочего места.</p></div>
-          <div class="card value-card reveal"><div class="icon">2</div><h3>Помогает безопасно тренировать клинические сценарии</h3><p class="muted">Практика происходит в образовательной симуляционной среде.</p></div>
-          <div class="card value-card reveal"><div class="icon">3</div><h3>Усиливает практико-ориентированное обучение</h3><p class="muted">Фокус смещается от пассивного запоминания к действию.</p></div>
-          <div class="card value-card reveal"><div class="icon">4</div><h3>Создаёт аналитику образовательных дефицитов</h3><p class="muted">Вуз видит, какие навыки требуют дополнительной отработки.</p></div>
-          <div class="card value-card reveal"><div class="icon">5</div><h3>Формирует кадровый резерв для клиник</h3><p class="muted">Клиники получают доступ к мотивированным студентам с подтверждёнными компетенциями.</p></div>
-          <div class="card value-card reveal"><div class="icon">6</div><h3>Даёт равный доступ к профессиональным возможностям</h3><p class="muted">Студенты из разных вузов могут продвигаться через компетенции, а не связи.</p></div>
+          <div class="card reveal"><div class="icon">1</div><h3>Снижает разрыв между теорией и практикой</h3><p class="muted">Студент отрабатывает реальные сценарии до первого рабочего места.</p></div>
+          <div class="card reveal"><div class="icon">2</div><h3>Помогает безопасно тренировать клинические сценарии</h3><p class="muted">Практика происходит в образовательной симуляционной среде.</p></div>
+          <div class="card reveal"><div class="icon">3</div><h3>Усиливает практико-ориентированное обучение</h3><p class="muted">Фокус смещается от пассивного запоминания к действию.</p></div>
+          <div class="card reveal"><div class="icon">4</div><h3>Создаёт аналитику образовательных дефицитов</h3><p class="muted">Вуз видит, какие навыки требуют дополнительной отработки.</p></div>
+          <div class="card reveal"><div class="icon">5</div><h3>Формирует кадровый резерв для клиник</h3><p class="muted">Клиники получают доступ к мотивированным студентам с подтверждёнными компетенциями.</p></div>
+          <div class="card reveal"><div class="icon">6</div><h3>Даёт равный доступ к возможностям</h3><p class="muted">Студенты из разных вузов могут продвигаться через компетенции, а не связи.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- CTA + Form -->
-    <section class="section compact" id="contact">
+    <section class="compact" id="budget">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Смета проекта</span>
+            <h2>Бюджет пилотного запуска</h2>
+          </div>
+          <p class="lead">Смета рассчитана для MVP-пилота на 6 месяцев: разработка цифровой платформы, методические материалы, интенсив, наставничество, аналитика и информационное сопровождение.</p>
+        </div>
+
+        <div class="budget-wrap reveal">
+          <table class="budget">
+            <thead>
+              <tr>
+                <th>Раздел</th>
+                <th>Что входит</th>
+                <th>Сумма</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Разработка цифрового MVP</td>
+                <td>UX/UI-прототип, веб-платформа или Telegram Mini App, личный кабинет, модуль кейсов, ИИ-пациент, хостинг и технические сервисы</td>
+                <td>540 000 ₽</td>
+              </tr>
+              <tr>
+                <td>Образовательный контент</td>
+                <td>Методология проекта, 20–30 клинических кейсов, шаблоны медицинской документации, экспертная проверка материалов</td>
+                <td>200 000 ₽</td>
+              </tr>
+              <tr>
+                <td>Интенсив и наставничество</td>
+                <td>8 занятий практического интенсива, наставнические разборы кейсов, подготовка итогового Demo Day</td>
+                <td>140 000 ₽</td>
+              </tr>
+              <tr>
+                <td>Информационное сопровождение</td>
+                <td>Презентация проекта, материалы для студентов и партнёров, контент для привлечения участников</td>
+                <td>70 000 ₽</td>
+              </tr>
+              <tr>
+                <td>Аналитика и отчётность</td>
+                <td>Анкетирование студентов до/после участия, аналитический отчёт по образовательным дефицитам, документационное сопровождение</td>
+                <td>50 000 ₽</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="total reveal">
+          <div>
+            <h3>Итого по пилоту</h3>
+            <p>Запрашиваемые средства направляются на создание MVP «МедМост» и проверку модели практической подготовки студентов к первому рабочему месту врача.</p>
+          </div>
+          <strong>1 000 000 ₽</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="compact" id="team">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Команда проекта</span>
+            <h2>МедМост создаёт команда на стыке медицины, образования и цифровых решений</h2>
+          </div>
+          <p class="lead">Проект объединяет медицинскую экспертизу, образовательную методологию, EdTech-подход и опыт создания цифровых продуктов для студентов.</p>
+        </div>
+
+        <div class="grid team-grid">
+          <article class="team-card reveal">
+            <div class="team-photo">
+              <img src="images/liana.jpg" alt="Лиана Мирзабалаева" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+              <div class="fallback">ЛМ</div>
+            </div>
+            <div class="team-body">
+              <h3>Лиана Мирзабалаева</h3>
+              <div class="role">Руководитель проекта</div>
+              <p>Стратегия проекта, образовательная логика, партнёрства и запуск пилотной программы для студентов медицинских университетов.</p>
+            </div>
+          </article>
+
+          <article class="team-card reveal">
+            <div class="team-photo">
+              <img src="images/anna.jpg" alt="Анна Зуенко" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+              <div class="fallback">АЗ</div>
+            </div>
+            <div class="team-body">
+              <h3>Анна Зуенко</h3>
+              <div class="role">Координатор образовательной программы</div>
+              <p>Организация интенсива, работа со студентами, подготовка материалов, коммуникация с участниками и сопровождение пилота.</p>
+            </div>
+          </article>
+
+          <article class="team-card reveal">
+            <div class="team-photo">
+              <img src="images/vitaliy.jpg" alt="Виталий Ванеев" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+              <div class="fallback">ВВ</div>
+            </div>
+            <div class="team-body">
+              <h3>Виталий Ванеев</h3>
+              <div class="role">Эксперт по EdTech и AI-продуктам</div>
+              <p>Продуктовая концепция, цифровая архитектура, развитие AI-компонентов, партнёрская модель и масштабирование платформы.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="compact" id="contact">
       <div class="container">
         <div class="cta reveal">
           <span class="eyebrow">Пилотный запуск</span>
-          <h2 style="margin-top: 22px;">Запустим пилот МедМост в вашем университете или клинике</h2>
-          <p class="lead">
-            Мы ищем партнёров для пилотного запуска: медицинские университеты, кафедры, клиники, врачей-наставников, студенческие сообщества и MedTech-команды.
-          </p>
+          <h2 style="margin-top:22px">Запустим пилот МедМост в вашем университете или клинике</h2>
+          <p class="lead">Мы ищем партнёров для пилотного запуска: медицинские университеты, кафедры, клиники, врачей-наставников, студенческие сообщества и MedTech-команды.</p>
 
-          <div class="cta-actions">
+          <div class="actions">
             <a class="btn btn-primary" href="#form">Стать партнёром</a>
             <a class="btn btn-secondary" href="#form">Получить презентацию</a>
             <a class="btn btn-secondary" href="#form">Записаться на демо</a>
@@ -2335,9 +2310,7 @@
 
               <div class="form-bottom">
                 <button class="btn btn-primary" type="submit">Отправить заявку</button>
-                <div class="form-message" id="formMessage">
-                  Заявка подготовлена. Подключите обработчик формы или интеграцию с CRM.
-                </div>
+                <div class="message" id="formMessage">Заявка подготовлена. Подключите обработчик формы или интеграцию с CRM.</div>
               </div>
             </form>
           </div>
@@ -2346,13 +2319,12 @@
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="footer">
+  <footer>
     <div class="container footer-grid">
       <div>
         <a class="logo" href="#top" aria-label="МедМост">
           <span class="logo-mark">
-            <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
               <path d="M5 17h5l2-5 5 10 3-7h7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M8 24c4-1 6-3 8-6 2 3 4 5 8 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
             </svg>
@@ -2365,7 +2337,7 @@
         </div>
       </div>
 
-      <div class="footer-contact">
+      <div class="contacts">
         <span>Email: medmost@example.com</span>
         <span>Telegram: @medmost_ai</span>
       </div>
@@ -2373,23 +2345,21 @@
   </footer>
 
   <script>
-    // Mobile menu
-    const mobileToggle = document.getElementById("mobileToggle");
+    const burger = document.getElementById("burger");
     const menu = document.getElementById("menu");
 
-    mobileToggle.addEventListener("click", () => {
+    burger.addEventListener("click", () => {
       menu.classList.toggle("open");
-      mobileToggle.textContent = menu.classList.contains("open") ? "×" : "☰";
+      burger.textContent = menu.classList.contains("open") ? "×" : "☰";
     });
 
     menu.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
         menu.classList.remove("open");
-        mobileToggle.textContent = "☰";
+        burger.textContent = "☰";
       });
     });
 
-    // Scroll reveal
     const revealElements = document.querySelectorAll(".reveal");
 
     const revealObserver = new IntersectionObserver((entries) => {
@@ -2406,7 +2376,6 @@
       revealObserver.observe(el);
     });
 
-    // Interactive case
     const caseData = [
       {
         title: "Жалобы",
@@ -2468,6 +2437,7 @@
 
     function renderCaseStep(index) {
       const item = caseData[index];
+
       caseTitle.textContent = item.title;
       caseText.textContent = item.text;
       studentAction.textContent = item.student;
@@ -2486,7 +2456,6 @@
 
     renderCaseStep(0);
 
-    // Audience tabs
     const audienceTabs = document.querySelectorAll(".audience-tab");
     const audiencePanels = document.querySelectorAll(".audience-panel");
 
@@ -2502,7 +2471,6 @@
       });
     });
 
-    // Form demo handler
     const leadForm = document.getElementById("leadForm");
     const formMessage = document.getElementById("formMessage");
 
